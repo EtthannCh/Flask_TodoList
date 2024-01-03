@@ -1,0 +1,13 @@
+{% include 'header.html' %} {% from 'bootstrap5/form.html' import render_form %}
+<div id="reg_form">
+  <h1>Register Form</h1>
+  <form action="/register" method="post">
+    {{render_form(form)}}
+    <a
+      href="/login"
+      style="position: absolute; bottom: 230px; color: #bbe1fa"
+      >Login? Click Here</a
+    >
+  </form>
+</div>
+{% include 'footer.html' %}

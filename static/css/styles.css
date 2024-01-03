@@ -1,0 +1,107 @@
+body {
+  background-color: #1b262c;
+  color: #bbe1fa;
+}
+
+nav ul {
+  display: flex;
+  position: absolute;
+  right: 50px;
+  top: 25px;
+  list-style-type: none;
+  gap: 30px;
+  font-size: 24px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #bbe1fa;
+}
+
+.wrapper {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper .sbmt-btn {
+  background-color: #3282b8;
+  color: #bbe1fa;
+  font-size: 27px;
+}
+
+.wrapper .navigation #direct_form {
+  list-style: none;
+  font-size: 24px;
+  display: flex;
+  gap: 30px;
+}
+
+.navigation #direct_form p {
+  cursor: pointer;
+}
+
+.navigation #direct_form p:hover {
+  color: #3282b8;
+}
+
+.wrapper .todo_list {
+  list-style-type: none;
+  width: 700px;
+  height: 100%;
+  margin-top: 35px;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #3282b8;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo_list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo_list li form {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.todo_list .rightBox-todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo_list .rightBox-todo .modal-content {
+  background-color: #1b262c;
+}
+
+.todo_list li form input {
+  width: 20px;
+  height: 20px;
+}
+
+.todo_list li p {
+  margin: 0 20px;
+  font-size: 24px;
+}
+
+.todo_list li input:checked + p {
+  text-decoration: line-through;
+}
+
+/* Register Form */
+#reg_form {
+  width: 500px;
+  margin: 15% auto;
+}
+
+#login_form {
+  width: 500px;
+  margin: 15% auto;
+}

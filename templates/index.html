@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% block content %} {% if todoList %} {% for todo in
+todoList %}
+<li>
+  <form action="{{url_for('delete', id=todo.id)}}" method="post">
+    <input
+      type="checkbox"
+      onchange="this.form.submit()"
+      {%
+      if
+      todo.checked
+      %}
+      checked
+      {%endif%}
+    />
+    <p>{{todo.task}}</p>
+  </form>
+  <div class="rightBox-todo">
+    <p class="todo_date">{{todo.date}}</p>
+    {% if complete %}
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      style="background-color: #3282B8; color: #bbe1fa"
+    >
+      <i class="fa-solid fa-trash-can"></i>
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Delete Confirmation
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            There are no way back when the DELETE button is click. Are you Sure?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              style="background-color: #0f4c75; color: #bbe1fa"
+            >
+              Close
+            </button>
+            <form
+              action="{{url_for('removeFromDb', id=todo.id)}}"
+              id="deleteTodoForm"
+            >
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                style="background-color: #3282b8; color: #bbe1fa"
+                onclick="deleteFunc()"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endif %}
+  </div>
+</li>
+{% endfor %} {% else %}
+<p>No Task At The Moment</p>
+
+{% endif %}
+<script>
+  function deleteFunc() {
+    document.getElementById("deleteTodoForm").submit();
+  }
+</script>
+{% endblock %}

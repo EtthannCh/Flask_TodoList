@@ -1,0 +1,65 @@
+{% include 'header.html' %}
+<body>
+  <nav>
+    <ul>
+      {% if current_user.is_authenticated %}
+      <li><a href="/logout">Logout</a></li>
+      <li><p>{{current_user.username}}</p></li>
+      {% else %}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <div class="wrapper">
+    <h1>Todo App</h1>
+
+    <form
+      class="input-group mb-3"
+      style="width: 500px"
+      action="/add"
+      method="post"
+    >
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Todo Task"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+        name="todo_input"
+        style="font-size: 20px"
+        for="button-addon2"
+        autofocus
+      />
+      <button class="btn sbmt-btn" type="submit" id="button-addon2">Add</button>
+    </form>
+    <ul class="navigation">
+      <form action="/direct" method="post" id="direct_form">
+        <li onclick="submitForm('tasks')">
+          <p>All Tasks</p>
+          <input type="hidden" name="nav_type" value="tasks" />
+        </li>
+        <li onclick="submitForm('upcoming')">
+          <p>Upcoming</p>
+          <input type="hidden" name="nav_type" value="upcoming" />
+        </li>
+        <li onclick="submitForm('completed')">
+          <p>Completed</p>
+          <input type="hidden" name="nav_type" value="working" />
+        </li>
+      </form>
+    </ul>
+    <ul class="todo_list">
+      {% block content %} {% endblock %}
+    </ul>
+  </div>
+</body>
+<script>
+  function submitForm(navType) {
+    document
+      .getElementById("direct_form")
+      .querySelector('input[name="nav_type"]').value = navType;
+    document.getElementById("direct_form").submit();
+  }
+</script>
+{% include 'footer.html' %}

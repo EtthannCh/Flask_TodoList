@@ -1,0 +1,22 @@
+{% include 'header.html' %} {% from 'bootstrap5/form.html' import render_form %}
+<div id="login_form">
+  <h1>Login Form</h1>
+  {% if error %}
+  <p class="error" style="color: rgb(244, 76, 29)">
+    <strong>Error:</strong> {{ error }} {% endif %}
+  </p>
+
+  <form action="/login" method="post">
+    {{render_form(form)}}
+    <a
+      href="/register"
+      style="
+        position: absolute;
+        bottom: 300px;
+        color: #bbe1fa;
+      "
+      >Register? Click Here</a
+    >
+  </form>
+</div>
+{% include 'footer.html' %}
